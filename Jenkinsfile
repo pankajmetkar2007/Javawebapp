@@ -6,18 +6,18 @@ pipeline {
 
     // global env variables
 
-    environment {
+  /*  environment {
 
         EMAIL_RECIPIENTS = 'akshay.kg@bt.com'
 
-    }
+    } */
     
     stages {
         
         stage('Build') {
             steps {
                 // Run the maven build
-                sh 'mvn clean deploy'
+                sh 'mvn clean install'
                 
             }
         }
@@ -38,7 +38,7 @@ pipeline {
            }
         }
         
-        stage('Code Quality Check (Sonarqube)')
+     /*   stage('Code Quality Check (Sonarqube)')
         {
           steps
           {
@@ -55,9 +55,9 @@ pipeline {
                 }
              }
           }
-        }
+        }   */
         
-        stage('Quality gate') {
+     /*   stage('Quality gate') {
 
             steps {
 
@@ -83,16 +83,16 @@ pipeline {
 
             }
 
-        }
+        } */
 
-        stage('Upload to Nexus') {
+     /*   stage('Upload to Nexus') {
             steps {
                 // Deploy to Nexus
                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'EED_Engg-Excellence-Devops-POC_maven_releases', packages: []
             }
-        }
+        } */
     }
-        post('Send Email') {
+      /*  post('Send Email') {
         failure {
             script {
                 mail (to: 'wasim.3.akram@bt.com',
@@ -100,7 +100,7 @@ pipeline {
                         body: "Please visit ${env.BUILD_URL} for further information"
                 );
                 }
-            }
+            }  
          success {
              script {
                 mail (to: 'wasim.3.akram@bt.com', 
@@ -111,5 +111,5 @@ pipeline {
                   );
                 }
             }      
-         }
+         } */
     }
