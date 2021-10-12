@@ -2,7 +2,7 @@ pipeline {
 
     // run on jenkins nodes tha has slave label .....
 
-    agent { label 'Node1' }
+    agent { label 'maven' }
 
     // global env variables
 
@@ -71,7 +71,7 @@ pipeline {
                         -Dsonar.cpp.file.suffixes=- \
                         -Dsonar.objc.file.suffixes=- \
                         -Dsonar.sourceEncoding=${sonarSourceEncoding}
-                
+    
                     """
                 }
              }
