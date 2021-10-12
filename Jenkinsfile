@@ -60,7 +60,7 @@ pipeline {
                
                     // some block
                     sh """
-                         ${sonarscanner}/bin/sonar-scanner -Dsonar.projectKey=${projectKey} \
+                        ${sonarscanner}/bin/sonar-scanner -Dsonar.projectKey=${projectKey} \
                         -Dsonar.projectName=${projectName} \
                         -Dsonar.projectVersion=${projectVersion} \
                         -Dsonar.sources=${sonarSources} \
