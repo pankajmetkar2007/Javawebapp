@@ -111,7 +111,8 @@ pipeline {
         stage('Upload to Nexus') {
             steps {
                 // Deploy to Nexus
-               nexusPublisher nexusInstanceId: 'nexus-dev', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'SimpleWebApplication', groupId: 'com.maven.bt', packaging: 'war', version: '9.1.14']]]
+               nexusPublisher nexusInstanceId: 'nexus-dev', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/SimpleWebApplication.war']], mavenCoordinate: [artifactId: "${appname}", groupId: "${appPomGroupID}", packaging: 'war', version: "${appVersion}-${BUILD_NUMBER}"]]]
+
             }
         } 
     }
